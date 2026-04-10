@@ -1802,3 +1802,149 @@ img {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ============================================
+   Accessibility — Skip Link
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--primary-500);
+  color: white;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+}
+
+/* ============================================
+   Accessibility — Focus Visible (Keyboard Navigation)
+   ============================================ */
+*:focus-visible {
+  outline: 3px solid var(--primary-400);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--primary-400);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(29, 185, 84, 0.15);
+}
+
+.sidebar-item:focus-visible {
+  outline-color: var(--primary-300);
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.3);
+}
+
+/* ============================================
+   Accessibility — Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .progress-bar-fill::after {
+    animation: none !important;
+  }
+
+  .scan-line {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Accessibility — Screen Reader Only
+   ============================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   Accessibility — High Contrast Mode
+   ============================================ */
+@media (forced-colors: active) {
+  .btn-primary {
+    border: 2px solid ButtonText;
+  }
+
+  .progress-bar-fill {
+    background: Highlight !important;
+  }
+
+  .badge {
+    border: 1px solid;
+  }
+
+  .stat-card {
+    border: 2px solid;
+  }
+
+  .card {
+    border: 1px solid;
+  }
+}
+
+/* Ensure interactive elements have visible hover/active states */
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Macro grid for scanner */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+/* Label styles for forms */
+.label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.3px;
+}
+
+/* Live region for dynamic announcements */
+[aria-live] {
+  contain: content;
+}
+

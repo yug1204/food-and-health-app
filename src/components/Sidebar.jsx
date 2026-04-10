@@ -27,15 +27,15 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="sidebar" id="sidebar">
-      <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">
+    <aside className="sidebar" id="sidebar" aria-label="Application sidebar">
+      <div className="sidebar-logo" aria-label="NutriSense" role="banner">
+        <div className="sidebar-logo-icon" aria-hidden="true">
           <Leaf />
         </div>
         <span className="sidebar-logo-text">NutriSense</span>
       </div>
 
-      <nav className="sidebar-nav">
+      <nav className="sidebar-nav" aria-label="Application pages">
         {navItems.map((item, idx) => {
           if (item.items !== undefined) {
             return (
@@ -54,8 +54,9 @@ export default function Sidebar() {
                 `sidebar-item ${isActive ? 'active' : ''}`
               }
               id={`nav-${item.path.replace('/', '') || 'dashboard'}`}
+              aria-label={item.label}
             >
-              <Icon />
+              <Icon aria-hidden="true" />
               <span>{item.label}</span>
             </NavLink>
           );
@@ -67,6 +68,7 @@ export default function Sidebar() {
           to="/profile"
           className="sidebar-user"
           id="sidebar-user-profile"
+          aria-label={`Profile: ${userData.name}`}
         >
           <div className="sidebar-avatar">{userData.initials}</div>
           <div className="sidebar-user-info">

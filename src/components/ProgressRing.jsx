@@ -22,8 +22,8 @@ export default function ProgressRing({
   }, [value]);
 
   return (
-    <div className="progress-ring" style={{ width: size, height: size }}>
-      <svg width={size} height={size}>
+    <div className="progress-ring" style={{ width: size, height: size }} role="img" aria-label={`${label}: ${Math.round(value)} of ${max}`}>
+      <svg width={size} height={size} aria-hidden="true">
         <circle
           className="progress-ring-bg"
           cx={size / 2}
