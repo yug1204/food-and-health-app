@@ -1,0 +1,7 @@
+node_modules
+dist
+server/nutrisense.db
+server/uploads
+.env
+*.log
+.DS_Store
